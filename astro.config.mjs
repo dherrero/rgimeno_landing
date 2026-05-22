@@ -9,4 +9,11 @@ export default defineConfig({
     inlineStylesheets: "auto",
   },
   compressHTML: true,
+  // Dev server config. `host: true` exposes it on the network and
+  // `allowedHosts: true` lets it be reached through the frp tunnel domain.
+  // These only affect `astro dev`, never the static production build.
+  server: {
+    host: true,
+    allowedHosts: true,
+  },
 });
