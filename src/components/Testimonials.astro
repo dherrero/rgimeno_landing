@@ -1,0 +1,63 @@
+---
+import { testimonials } from "../data/content";
+---
+
+<section class="testimonials section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <h2 id="testimonials-heading" class="visually-hidden">Testimonios</h2>
+    <ul class="testimonials__grid" role="list">
+      {
+        testimonials.map((testimonial) => (
+          <li>
+            <figure class="testimonials__item">
+              <blockquote class="testimonials__quote">
+                <p>“{testimonial.quote}”</p>
+              </blockquote>
+              <figcaption class="testimonials__author">
+                <span class="testimonials__name">{testimonial.author}</span>
+                <span class="testimonials__role">{testimonial.role}</span>
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .testimonials__grid {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    margin: 0;
+  }
+
+  .testimonials__item {
+    margin: 0;
+    padding: var(--space-l);
+    border-radius: var(--radius-l);
+    background: var(--color-surface-2);
+  }
+
+  .testimonials__quote {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+
+  .testimonials__author {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-m);
+  }
+
+  .testimonials__name {
+    font-weight: 600;
+  }
+
+  .testimonials__role {
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+</style>

@@ -1,0 +1,187 @@
+---
+import { navLinks, site } from "../data/content";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="#contenido">
+      <span aria-hidden="true" class="header__mark">RA</span>
+      <span class="header__name">{site.name}</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Navegación principal">
+      <button
+        id="nav-toggle"
+        type="button"
+        class="header__menu-btn"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="visually-hidden">Abrir menú de navegación</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+
+      <ul id="primary-nav" class="header__links" role="list">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a class="header__link" href={link.href}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    min-height: 4.5rem;
+  }
+
+  .header__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .header__mark {
+    display: inline-grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-s);
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+    font-size: var(--step--1);
+    font-weight: 700;
+  }
+
+  .header__nav {
+    margin-inline-start: auto;
+  }
+
+  .header__links {
+    display: flex;
+    gap: var(--space-m);
+    margin: 0;
+  }
+
+  .header__link {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--step--1);
+    padding-block: 0.25rem;
+  }
+
+  .header__link:hover {
+    color: var(--color-text);
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__menu-btn {
+    display: none;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-s);
+    background: var(--color-surface);
+    cursor: pointer;
+  }
+
+  .header__menu-btn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  /* Mobile: collapse the link list behind a toggle button. */
+  @media (max-width: 48rem) {
+    .header__menu-btn {
+      display: inline-grid;
+    }
+
+    .header__links {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      flex-direction: column;
+      gap: 0;
+      padding: var(--space-xs);
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-m);
+      display: none;
+    }
+
+    .header__links[data-open="true"] {
+      display: flex;
+    }
+
+    .header__link {
+      display: block;
+      padding: var(--space-xs) var(--space-2xs);
+      font-size: var(--step-0);
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("nav-toggle");
+  const menu = document.getElementById("primary-nav");
+
+  const setOpen = (open: boolean) => {
+    btn?.setAttribute("aria-expanded", String(open));
+    if (menu) menu.dataset.open = String(open);
+  };
+
+  btn?.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-expanded") === "true";
+    setOpen(!open);
+  });
+
+  // Close the menu after choosing a destination.
+  menu?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) setOpen(false);
+  });
+
+  // Close on Escape for keyboard users.
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+</script>

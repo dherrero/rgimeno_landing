@@ -1,0 +1,88 @@
+---
+import { contact, socials } from "../data/content";
+---
+
+<section id="contacto" class="contact section" aria-labelledby="contact-heading">
+  <div class="container-narrow contact__inner">
+    <p class="eyebrow">Contacto</p>
+    <h2 id="contact-heading" class="contact__heading">{contact.heading}</h2>
+    <p class="contact__text">{contact.description}</p>
+
+    <a class="btn btn--primary contact__cta" href={`mailto:${contact.email}`}>
+      {contact.emailLabel}
+    </a>
+
+    <p class="contact__email">
+      <a href={`mailto:${contact.email}`}>{contact.email}</a>
+    </p>
+
+    <ul class="contact__socials" role="list">
+      {
+        socials.map((social) => (
+          <li>
+            <a
+              class="contact__social"
+              href={social.href}
+              aria-label={social.ariaLabel}
+              rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+            >
+              {social.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .contact {
+    text-align: center;
+    background: radial-gradient(
+      50rem 30rem at 50% 120%,
+      var(--color-accent-soft) 0%,
+      transparent 60%
+    );
+  }
+
+  .contact__heading {
+    margin-top: var(--space-2xs);
+    font-size: var(--step-4);
+  }
+
+  .contact__text {
+    margin-top: var(--space-s);
+    margin-inline: auto;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+    max-width: 34rem;
+  }
+
+  .contact__cta {
+    margin-top: var(--space-l);
+  }
+
+  .contact__email {
+    margin-top: var(--space-m);
+    font-size: var(--step-1);
+  }
+
+  .contact__socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-m);
+    margin-top: var(--space-l);
+    padding: 0;
+  }
+
+  .contact__social {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .contact__social:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Ramón Aliaga — Product Designer especializado en accesibilidad">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1822" />
+      <stop offset="1" stop-color="#372fa8" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <text x="80" y="250" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="600" fill="#a5b4fc">PRODUCT DESIGNER · ACCESIBILIDAD</text>
+  <text x="80" y="360" font-family="Inter, system-ui, sans-serif" font-size="96" font-weight="700" fill="#ffffff">Ramón Aliaga</text>
+  <text x="80" y="450" font-family="Inter, system-ui, sans-serif" font-size="40" font-weight="400" fill="#e4dfd6">Diseño productos digitales para todas las personas.</text>
+</svg>
