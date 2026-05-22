@@ -1,0 +1,38 @@
+---
+import { projects } from "../data/content";
+import ProjectCard from "./ProjectCard.astro";
+---
+
+<section id="proyectos" class="work section" aria-labelledby="work-heading">
+  <div class="container">
+    <header class="work__header">
+      <p class="eyebrow">Proyectos seleccionados</p>
+      <h2 id="work-heading" class="section-title">Trabajo reciente</h2>
+      <p class="section-intro">
+        Una muestra de proyectos donde la accesibilidad fue clave para el resultado. Escríbeme para
+        recibir los casos de estudio completos.
+      </p>
+    </header>
+
+    <div class="work__grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .work__header {
+    max-width: 40rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .work__header .section-title {
+    margin-top: var(--space-2xs);
+  }
+
+  .work__grid {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+</style>

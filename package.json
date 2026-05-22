@@ -1,0 +1,22 @@
+{
+  "name": "portfolio-ramon",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Portfolio personal de Ramón Aliaga — Product Designer especializado en accesibilidad.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write \"src/**/*.{astro,ts,css}\" \"*.{mjs,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{astro,ts,css}\" \"*.{mjs,json,md}\""
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "astro": "^5.7.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.8.3"
+  }
+}

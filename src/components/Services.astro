@@ -1,0 +1,59 @@
+---
+import { services } from "../data/content";
+---
+
+<section id="servicios" class="services section" aria-labelledby="services-heading">
+  <div class="container">
+    <header class="services__header">
+      <p class="eyebrow">En qué puedo ayudarte</p>
+      <h2 id="services-heading" class="section-title">Servicios</h2>
+    </header>
+
+    <ul class="services__grid" role="list">
+      {
+        services.map((service) => (
+          <li class="services__item">
+            <h3 class="services__title">{service.title}</h3>
+            <p class="services__text">{service.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .services__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .services__header .section-title {
+    margin-top: var(--space-2xs);
+  }
+
+  .services__grid {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    margin: 0;
+  }
+
+  .services__item {
+    padding-top: var(--space-m);
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .services__title {
+    font-size: var(--step-1);
+  }
+
+  .services__text {
+    margin-top: var(--space-2xs);
+    color: var(--color-muted);
+  }
+</style>

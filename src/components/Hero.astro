@@ -1,0 +1,92 @@
+---
+import { hero } from "../data/content";
+---
+
+<section class="hero section" aria-labelledby="hero-heading">
+  <div class="container hero__inner">
+    <p class="hero__eyebrow">{hero.eyebrow}</p>
+    <h1 id="hero-heading" class="hero__heading">{hero.heading}</h1>
+    <p class="hero__subheading">{hero.subheading}</p>
+
+    <div class="hero__actions">
+      <a class="btn btn--primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+      <a class="btn btn--ghost" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+    </div>
+
+    <dl class="hero__stats">
+      {
+        hero.stats.map((stat) => (
+          <div class="hero__stat">
+            <dt class="hero__stat-value">{stat.value}</dt>
+            <dd class="hero__stat-label">{stat.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(var(--space-xl), 10vh, var(--space-3xl));
+    background: radial-gradient(
+      60rem 40rem at 80% -10%,
+      var(--color-accent-soft) 0%,
+      transparent 60%
+    );
+  }
+
+  .hero__inner {
+    max-width: 52rem;
+  }
+
+  .hero__eyebrow {
+    display: inline-block;
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-s);
+  }
+
+  .hero__heading {
+    font-size: var(--step-5);
+  }
+
+  .hero__subheading {
+    margin-top: var(--space-m);
+    font-size: var(--step-1);
+    color: var(--color-muted);
+    max-width: 42rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-top: var(--space-l);
+  }
+
+  .hero__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-l);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .hero__stat-value {
+    font-size: var(--step-3);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__stat-label {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+    max-width: 12rem;
+  }
+</style>

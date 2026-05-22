@@ -1,0 +1,76 @@
+---
+import { principles } from "../data/content";
+---
+
+<section id="enfoque" class="approach section" aria-labelledby="approach-heading">
+  <div class="container">
+    <header class="approach__header">
+      <p class="eyebrow">Cómo trabajo</p>
+      <h2 id="approach-heading" class="section-title">Accesibilidad como punto de partida</h2>
+      <p class="section-intro">
+        La accesibilidad no es una capa que se añade al final: es una forma de diseñar. Estos son
+        los principios que guían cada proyecto.
+      </p>
+    </header>
+
+    <ol class="approach__list" role="list">
+      {
+        principles.map((principle, index) => (
+          <li class="approach__item">
+            <span class="approach__number" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 class="approach__title">{principle.title}</h3>
+            <p class="approach__text">{principle.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .approach {
+    background: var(--color-surface);
+    border-block: 1px solid var(--color-border);
+  }
+
+  .approach__header {
+    max-width: 40rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .approach__header .section-title {
+    margin-top: var(--space-2xs);
+  }
+
+  .approach__list {
+    display: grid;
+    gap: var(--space-l);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    margin: 0;
+  }
+
+  .approach__item {
+    padding: var(--space-m);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-m);
+    background: var(--color-bg);
+  }
+
+  .approach__number {
+    display: block;
+    font-size: var(--step-2);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .approach__title {
+    margin-block: var(--space-xs) var(--space-2xs);
+    font-size: var(--step-1);
+  }
+
+  .approach__text {
+    color: var(--color-muted);
+  }
+</style>
